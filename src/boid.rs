@@ -110,3 +110,16 @@ impl Boid {
         desired_vel - self.vel
     }
 }
+
+impl Default for Boid {
+    fn default() -> Self {
+        Boid {
+            pos: Vec2::random_in_screen(),
+            vel: Vec2::random(-150., 150.),
+            acc: Vec2::ZERO,
+            max_speed: 250.,
+            size: 5.,
+            color: WHITE,
+        }
+    }
+}

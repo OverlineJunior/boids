@@ -4,6 +4,7 @@ pub trait Vec2Extra {
     fn limit(&mut self, max_length: f32);
     fn wrap_around(&mut self);
     fn random(min: f32, max: f32) -> Vec2;
+    fn random_in_screen() -> Vec2;
     fn with_length(&self, length: f32) -> Vec2;
 }
 
@@ -36,6 +37,11 @@ impl Vec2Extra for Vec2 {
     /// Returns a random vector with components in the range `[min, max]`.
     fn random(min: f32, max: f32) -> Vec2 {
         Vec2::new(rand::gen_range(min, max), rand::gen_range(min, max))
+    }
+
+    /// Returns a random vector within the screen bounds.
+    fn random_in_screen() -> Vec2 {
+        Vec2::new(rand::gen_range(0., screen_width()), rand::gen_range(0., screen_height()))
     }
 
     /// Returns the same vector with the specified length.
