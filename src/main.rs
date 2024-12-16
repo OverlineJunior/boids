@@ -3,7 +3,7 @@ mod vec2_extra;
 
 use boid::Boid;
 use new_egui_macroquad::egui;
-use new_egui_macroquad::macroquad::{self, prelude::*};
+use new_egui_macroquad::macroquad::{self, prelude::*, time};
 
 fn draw_debugger(
     debug_view: &mut bool,
@@ -19,6 +19,7 @@ fn draw_debugger(
             ui.add(egui::Slider::new(alignment_mult, 0.0..=5.0).text("Alignment"));
             ui.add(egui::Slider::new(cohesion_mult, 0.0..=5.0).text("Cohesion"));
             ui.add(egui::Slider::new(separation_mult, 0.0..=5.0).text("Separation"));
+            ui.label(format!("{} fps", time::get_fps()));
         });
     });
 }
